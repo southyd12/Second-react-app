@@ -4,20 +4,26 @@ import { Typography } from '@mui/material';
 
 import { CartoonsContext } from '../components/contexts/cartoon.context';
 
+import CartoonList from '../components/CartoonList';
+
 function CartoonListPage() {
   const {cartoons, fetchCartoons, deleteCartoon} = useContext(CartoonsContext);
 
   useEffect(() => {
     fetchCartoons();
   }, [fetchCartoons]);
-  
+
+  const deleteHandler = (id) => {
+    deleteCartoon(id);
+  };
+
   return (
     <>
       <Typography variant="h3" component="h2">
         Cartoons
       </Typography>
       {/* <Button onClick={() => showMessage({type: 'warning', string: "This is a warning"})}>Show Message</Button> */}
-      {/* <CarsList cars={cars} deleteHandler={deleteHandler} /> */}
+      <CartoonList cartoons={cartoons} deleteHandler={deleteHandler} />
     </>
   )
 }
