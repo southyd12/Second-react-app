@@ -11,6 +11,8 @@ import theme from './theme/theme';
 
 import Layout from './components/Layout';
 
+import { CartoonsProvider } from './components/contexts/cartoon.context';
+
 import List from './pages/List';
 import Add from './pages/Add';
 import Update from './pages/Update';
@@ -22,10 +24,9 @@ function App() {
 
   return (
     <Router>
-    {/* <CssBaseline />
+    <CssBaseline />
     <ThemeProvider theme={theme}>
-      <UIProvider>
-        <CarsProvider> */}
+        <CartoonsProvider>
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<List />}/>
@@ -34,9 +35,8 @@ function App() {
               <Route path="*" element={<NotFound />}/>
             </Route>
           </Routes>        
-        {/* </CarsProvider>
-      </UIProvider>
-    </ThemeProvider> */}
+        </CartoonsProvider>
+    </ThemeProvider>
       
     </Router>
   )

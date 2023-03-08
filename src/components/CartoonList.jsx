@@ -11,19 +11,19 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { Typography } from '@mui/material';
 
 function CartoonList({
-  cars=[], 
-  deleteHandler=() => console.log('No deleteHandler provided to Cars List')
+  cartoons=[], 
+  deleteHandler=() => console.log('No deleteHandler provided to Cartoons List')
 }) {
-  const reversedCars = [...cars].reverse();
+  const reversedCartoons = [...cartoons].reverse();
   return (
     <List>
-        {reversedCars.map(({ name, bhp, avatar_url, _id }) => (
+        {reversedCartoons.map(({ title, creator, image, _id }) => (
           <ListItem key={_id}>
             <ListItemAvatar>
-              <Avatar alt="" src={avatar_url} />
+              <Avatar alt="" src={image} />
             </ListItemAvatar>
             <ListItemText>
-              {name} (BHP: {bhp})
+              {title} (Created by: {creator})
             </ListItemText>
             <IconButton
               aria-label="update"

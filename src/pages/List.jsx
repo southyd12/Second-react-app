@@ -1,8 +1,16 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Button} from '@mui/material';
 import { Typography } from '@mui/material';
 
+import { CartoonsContext } from '../components/contexts/cartoon.context';
+
 function CartoonListPage() {
+  const {cartoons, fetchCartoons, deleteCartoon} = useContext(CartoonsContext);
+
+  useEffect(() => {
+    fetchCartoons();
+  }, [fetchCartoons]);
+  
   return (
     <>
       <Typography variant="h3" component="h2">
