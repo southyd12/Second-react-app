@@ -41,7 +41,7 @@ const formRowStyle = {
 
 let submitFn = (vals) => {
   reset();
-  cartoon ? submitHandler(cartoon._id, vals) : submitHandler(vals);
+  cartoon ? submitHandler(cartoon.id, vals) : submitHandler(vals);
 };
 
 return (

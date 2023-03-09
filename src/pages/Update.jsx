@@ -5,10 +5,10 @@ import CartoonForm from '../components/forms/CartoonForm';
 import { CartoonsContext } from '../components/contexts/cartoon.context';
 
 function Update() {
-  const {id} = useParams();
+  const {i} = useParams();
   const {cartoons, updateCartoon} = useContext(CartoonsContext);
 
-  const cartoon = cartoons.find(({_id}) => id === _id);
+  const cartoon = cartoons.find(({id}) => i === id);
 
   return (
     <>

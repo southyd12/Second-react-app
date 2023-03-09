@@ -17,8 +17,8 @@ function CartoonList({
   const reversedCartoons = [...cartoons].reverse();
   return (
     <List>
-        {reversedCartoons.map(({ title, creator, image, _id }) => (
-          <ListItem key={_id}>
+        {reversedCartoons.map(({ title, creator, image, id }) => (
+          <ListItem key={id}>
             <ListItemAvatar>
               <Avatar alt="" src={image} />
             </ListItemAvatar>
@@ -27,12 +27,12 @@ function CartoonList({
             </ListItemText>
             <IconButton
               aria-label="update"
-              to={`/update/${_id}`}
+              to={`/update/${id}`}
               component={Link}
             >
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete" onClick={() => deleteHandler(_id)}>
+            <IconButton aria-label="delete" onClick={() => deleteHandler(id)}>
               <DeleteIcon />
             </IconButton>
           </ListItem>

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback, useContext } from "react";
+import React, { createContext, useState, useCallback } from "react";
 import { CARTOONS_ENDPOINT, STORAGE_KEY } from "../../settings";
 
 export const CartoonsContext = createContext({
@@ -62,17 +62,16 @@ export const CartoonsProvider = ({children}) => {
       setCartoons(newCartoons);
     } catch (err) {
       console.log(err);
-      showMessage({type: 'error', string: "Error loading cartoons"})
     }
   }, [cartoons]);
 
-  const updateCartoon = useCallback(async (id, formData) => {
-    console.log("updating", id, formData);
+  const updateCartoon = useCallback(async (i, formData) => {
+    console.log("updating", i, formData);
     let updatedCartoon = null;
 
-    const index = cartoons.findIndex((cartoon) => cartoon._id === id);
+    const index = cartoons.findIndex((cartoon) => cartoon.id === i);
     console.log(index);
-    if (index === -1) throw new Error(`Cartoon with index ${id} not found`);
+    if (index === -1) throw new Error(`Cartoon with index ${i} not found`);
 
     const oldCartoon = cartoons[index];
     console.log("oldCartoon", oldCartoon);
@@ -80,14 +79,14 @@ export const CartoonsProvider = ({children}) => {
     const updates = {};
 
     for (const key of Object.keys(oldCartoon)) {
-      if (key === "_id") continue;
+      if (key === "id") continue;
       if (oldCartoon[key] !== formData[key]) {
         updates[key] = formData[key];
       }
     }
 
     try {
-      const response = await fetch(`${CARTOONS_ENDPOINT}${id}`, {
+      const response = await fetch(`${CARTOONS_ENDPOINT}${i}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -118,10 +117,10 @@ export const CartoonsProvider = ({children}) => {
     }
   }, [cartoons]);
 
-  const deleteCartoon = useCallback(async (id) => {
+  const deleteCartoon = useCallback(async (i) => {
     let deletedCartoon = null;
     try {
-      const response = await fetch(`${CARTOONS_ENDPOINT}${id}`, {
+      const response = await fetch(`${CARTOONS_ENDPOINT}${i}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -131,7 +130,7 @@ export const CartoonsProvider = ({children}) => {
         throw response;
       }
 
-      const index = cartoons.findIndex((cartoon) => cartoon._id === id);
+      const index = cartoons.findIndex((cartoon) => cartoon.id === i);
       deletedCartoon = cartoons[index];
 
       const updatedCartoons = [...cartoons.slice(0, index), ...cartoons.slice(index + 1)];

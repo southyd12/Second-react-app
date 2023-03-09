@@ -1,5 +1,4 @@
 import React, {useContext, useEffect} from 'react'
-import {Button} from '@mui/material';
 import { Typography } from '@mui/material';
 
 import { CartoonsContext } from '../components/contexts/cartoon.context';
@@ -13,8 +12,8 @@ function CartoonListPage() {
     fetchCartoons();
   }, [fetchCartoons]);
 
-  const deleteHandler = (id) => {
-    deleteCartoon(id);
+  const deleteHandler = (i) => {
+    deleteCartoon(i);
   };
 
   return (
@@ -22,7 +21,6 @@ function CartoonListPage() {
       <Typography variant="h3" component="h2">
         Cartoons
       </Typography>
-      {/* <Button onClick={() => showMessage({type: 'warning', string: "This is a warning"})}>Show Message</Button> */}
       <CartoonList cartoons={cartoons} deleteHandler={deleteHandler} />
     </>
   )
