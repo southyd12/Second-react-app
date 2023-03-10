@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ListItemText from '@mui/material/ListItemText';
 import EditIcon from '@mui/icons-material/Edit';
+import Divider from '@mui/material/Divider';
 import { Typography } from '@mui/material';
 
 function DriverList({
@@ -14,11 +15,12 @@ function DriverList({
 }) {
   const reversedDrivers = [...drivers].reverse();
   return (
+    <>
     <List sx={{border: 2, borderColor: 'primary.main', borderRadius: 2, mt: 2}}>
         {reversedDrivers.map(({ firstname, lastname, age, email, _id }) => (
-          <ListItem key={_id}>
+          <ListItem key={_id} divider>
             <ListItemText>
-              {firstname} {lastname} ({age} years old) Email: {email}
+              {firstname} {lastname} ({age} years old) <Divider orientation="vertical" /> {email}
             </ListItemText>
             <IconButton
               aria-label="update"
@@ -31,9 +33,11 @@ function DriverList({
             <IconButton aria-label="delete" color="secondary" onClick={() => deleteHandler(_id)}>
               <DeleteIcon />
             </IconButton>
-          </ListItem>
+          </ListItem>          
         ))}
       </List>
+      {/* <Divider /> */}
+    </>
   )
 }
 
