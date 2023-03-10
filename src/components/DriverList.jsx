@@ -14,7 +14,7 @@ function DriverList({
 }) {
   const reversedDrivers = [...drivers].reverse();
   return (
-    <List>
+    <List sx={{border: 2, borderColor: 'primary.main', borderRadius: 2, mt: 2}}>
         {reversedDrivers.map(({ firstname, lastname, age, email, _id }) => (
           <ListItem key={_id}>
             <ListItemText>
@@ -22,12 +22,13 @@ function DriverList({
             </ListItemText>
             <IconButton
               aria-label="update"
+              color="secondary"
               to={`/update/${_id}`}
               component={Link}
             >
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete" onClick={() => deleteHandler(_id)}>
+            <IconButton aria-label="delete" color="secondary" onClick={() => deleteHandler(_id)}>
               <DeleteIcon />
             </IconButton>
           </ListItem>

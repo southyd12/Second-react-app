@@ -15,7 +15,7 @@ function Add() {
 
   return (
     <>
-      <Typography variant="h2" component="h1">
+      <Typography variant="h2" component="h1" sx={{display:'flex', justifyContent: 'center', mb: 2}}>
         Add Driver
       </Typography>
       <DriverForm submitHandler={submitHandler} />

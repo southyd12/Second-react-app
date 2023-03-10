@@ -19,7 +19,7 @@ function DriverListPage() {
 
   return (
     <>
-      <Typography variant="h3" component="h2">
+      <Typography variant="h2" component="h1" sx={{display:'flex', justifyContent: 'center'}}>
         Drivers
       </Typography>
       <DriverList drivers={drivers} deleteHandler={deleteHandler} />

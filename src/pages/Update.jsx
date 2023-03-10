@@ -12,7 +12,7 @@ function Update() {
 
   return (
     <>
-      <Typography variant="h2" component="h1" sx={{ marginBottom: 2 }}>
+      <Typography variant="h2" component="h1" sx={{display:'flex', justifyContent: 'center', mb: 2}}>
         Update Driver
       </Typography>
       <DriverForm driver={driver} submitHandler={updateDriver} />
