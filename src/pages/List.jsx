@@ -1,29 +1,30 @@
-import React, {useContext, useEffect} from 'react'
+import React, { useContext, useEffect } from 'react';
 import { Typography } from '@mui/material';
 
-import { CartoonsContext } from '../components/contexts/cartoon.context';
+import { DriversContext } from '../components/contexts/driver.context';
 
-import CartoonList from '../components/CartoonList';
+import DriverList from '../components/DriverList';
 
-function CartoonListPage() {
-  const {cartoons, fetchCartoons, deleteCartoon} = useContext(CartoonsContext);
+function DriverListPage() {
+  const { drivers, fetchDrivers, deleteDriver } =
+    useContext(DriversContext);
 
   useEffect(() => {
-    fetchCartoons();
-  }, [fetchCartoons]);
+    fetchDrivers();
+  }, [fetchDrivers]);
 
-  const deleteHandler = (i) => {
-    deleteCartoon(i);
+  const deleteHandler = (id) => {
+    deleteDriver(id);
   };
 
   return (
     <>
       <Typography variant="h3" component="h2">
-        Cartoons
+        Drivers
       </Typography>
-      <CartoonList cartoons={cartoons} deleteHandler={deleteHandler} />
+      <DriverList drivers={drivers} deleteHandler={deleteHandler} />
     </>
-  )
+  );
 }
 
-export default CartoonListPage
+export default DriverListPage;

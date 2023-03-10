@@ -1,27 +1,23 @@
-import React, {useContext} from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import CartoonForm from '../components/forms/CartoonForm';
-import { CartoonsContext } from '../components/contexts/cartoon.context';
+import DriverForm from '../components/forms/DriverForm';
+import { DriversContext } from '../components/contexts/driver.context';
 
 function Update() {
-  const {i} = useParams();
-  const {cartoons, updateCartoon} = useContext(CartoonsContext);
+  const { id } = useParams();
+  const { drivers, updateDriver } = useContext(DriversContext);
 
-  const cartoon = cartoons.find(({id}) => i === id);
+  const driver = drivers.find(({ _id }) => id === _id);
 
   return (
     <>
-      <Typography
-         variant="h2"
-         component="h1"
-         sx={{marginBottom: 2}}       
-        >
-        Update Cartoon              
+      <Typography variant="h2" component="h1" sx={{ marginBottom: 2 }}>
+        Update Driver
       </Typography>
-      <CartoonForm cartoon={cartoon} submitHandler={updateCartoon} />
+      <DriverForm driver={driver} submitHandler={updateDriver} />
     </>
-  )
+  );
 }
 
-export default Update
+export default Update;

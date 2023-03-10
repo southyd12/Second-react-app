@@ -4,35 +4,30 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Avatar from '@mui/material/Avatar';
 import ListItemText from '@mui/material/ListItemText';
 import EditIcon from '@mui/icons-material/Edit';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { Typography } from '@mui/material';
 
-function CartoonList({
-  cartoons=[], 
-  deleteHandler=() => console.log('No deleteHandler provided to Cartoons List')
+function DriverList({
+  drivers=[], 
+  deleteHandler=() => console.log('No deleteHandler provided to Drivers List')
 }) {
-  const reversedCartoons = [...cartoons].reverse();
+  const reversedDrivers = [...drivers].reverse();
   return (
     <List>
-        {reversedCartoons.map(({ title, creator, image, id }) => (
-          <ListItem key={id}>
-            <ListItemAvatar>
-              <Avatar alt="" src={image} />
-            </ListItemAvatar>
+        {reversedDrivers.map(({ firstname, lastname, age, email, _id }) => (
+          <ListItem key={_id}>
             <ListItemText>
-              {title} (Created by: {creator})
+              {firstname} {lastname} ({age} years old) Email: {email}
             </ListItemText>
             <IconButton
               aria-label="update"
-              to={`/update/${id}`}
+              to={`/update/${_id}`}
               component={Link}
             >
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete" onClick={() => deleteHandler(id)}>
+            <IconButton aria-label="delete" onClick={() => deleteHandler(_id)}>
               <DeleteIcon />
             </IconButton>
           </ListItem>
@@ -41,4 +36,4 @@ function CartoonList({
   )
 }
 
-export default CartoonList
+export default DriverList

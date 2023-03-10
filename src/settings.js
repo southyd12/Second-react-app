@@ -1,2 +1,2 @@
-export const CARTOONS_ENDPOINT = "https://api.sampleapis.com/cartoons/cartoons2D/";
-export const STORAGE_KEY = 'cartoons'
+export const DRIVERS_ENDPOINT = "https://carsapp2050.fly.dev/api/v1/drivers/";
+export const STORAGE_KEY = 'drivers'

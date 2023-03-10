@@ -5,18 +5,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, Button } from "@mui/material";
 
 const schema = yup.object().shape({
-  title: yup.string().max(200).required(),
-  creator: yup.string().max(100).required(),
-  image: yup.string().url(),
+  firstname: yup.string().max(50).required(),
+  lastname: yup.string().max(100).required(),
+  age: yup.number().positive().integer().required(),
+  email: yup.string().email().required(),
 }).required();
 
 const defaults = {
-  title: "",
-  creator: "",
-  image: "",
+  firstname: "",
+  lastname: "",
+  age: "",
+  email: "",
 };
 
-export default function CartoonForm({ cartoon, submitHandler }) {
+export default function DriverForm({ driver, submitHandler }) {
 
 const {
   handleSubmit,
@@ -26,14 +28,14 @@ const {
 } = useForm({
   resolver: yupResolver(schema),
   mode: "onChange",
-  defaultValues: cartoon || defaults,
+  defaultValues: driver || defaults,
 });
 
 useEffect(() => {
-  if (cartoon) {
-    reset(cartoon);
+  if (driver) {
+    reset(driver);
   }  
-}, [cartoon, reset]);
+}, [driver, reset]);
 
 const formRowStyle = {
   marginBlockEnd: "1em",
@@ -41,7 +43,7 @@ const formRowStyle = {
 
 let submitFn = (vals) => {
   reset();
-  cartoon ? submitHandler(cartoon.id, vals) : submitHandler(vals);
+  driver ? submitHandler(driver._id, vals) : submitHandler(vals);
 };
 
 return (
@@ -49,16 +51,16 @@ return (
     <div style={formRowStyle}>
         <Controller
           control={control}
-          name="title"
+          name="firstname"
           defaultValue={""}
           render={({ field }) => (
             <TextField
               type="name"
               {...field}
-              label="title"
+              label="first name"
               fullWidth
-              error={!!errors.title}
-              helperText={errors.title?.message}
+              error={!!errors.firstname}
+              helperText={errors.firstname?.message}
             />
           )}
         />
@@ -66,16 +68,16 @@ return (
       <div style={formRowStyle}>
         <Controller
           control={control}
-          name="creator"
+          name="lastname"
           defaultValue={""}
           render={({ field }) => (
             <TextField
               type="name"
               fullWidth
-              error={!!errors.creator}
+              error={!!errors.lastname}
               {...field}
-              label="creator"
-              helperText={errors.creator?.message}
+              label="last name"
+              helperText={errors.lastname?.message}
             />
           )}
         />
@@ -83,16 +85,33 @@ return (
       <div style={formRowStyle}>
         <Controller
           control={control}
-          name="image"
+          name="age"
           defaultValue={""}
           render={({ field }) => (
             <TextField
               fullWidth
-              type="text"
-              error={!!errors.image}
+              type="number"
+              error={!!errors.age}
               {...field}
-              label="image"
-              helperText={errors.image?.message}
+              label="age"
+              helperText={errors.age?.message}
+            />
+          )}
+        />
+      </div>
+      <div style={formRowStyle}>
+        <Controller
+          control={control}
+          name="email"
+          defaultValue={""}
+          render={({ field }) => (
+            <TextField
+              fullWidth
+              type="email"
+              error={!!errors.email}
+              {...field}
+              label="email"
+              helperText={errors.email?.message}
             />
           )}
         />

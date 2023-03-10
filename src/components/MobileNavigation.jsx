@@ -26,18 +26,18 @@ function MobileNavigation({mobileOpen=false, handleDrawerToggle = () => console.
         >
           <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Cartoon App
+        Driver App
       </Typography>
       <Divider />
       <List>
           <ListItem>
             <ListItemButton sx={{ textAlign: 'left' }} component={NavLink} to="/">
-              <ListItemText primary={"Cartoon List"} />
+              <ListItemText primary={"Driver List"} />
             </ListItemButton>
           </ListItem>
           <ListItem>
             <ListItemButton sx={{ textAlign: 'left' }} component={NavLink} to="/add">
-              <ListItemText primary={"Add Cartoon"} />
+              <ListItemText primary={"Add Driver"} />
             </ListItemButton>
           </ListItem>
       </List>
