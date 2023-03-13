@@ -12,4 +12,14 @@ const theme = createTheme({
   },
 });
 
+theme.typography.h2 = {
+  fontSize: "3rem",
+  "@media (min-width:600px)": {
+    fontSize: "5rem",
+  },
+  [theme.breakpoints.up("md")]: {
+    fontSize: "5rem",
+  },
+};
+
 export default theme;

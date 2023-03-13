@@ -43,7 +43,7 @@ const formRowStyle = {
 
 let submitFn = (vals) => {
   reset();
-  driver ? submitHandler(driver._id, vals) : submitHandler(vals);
+  submitHandler(vals);
 };
 
 return (

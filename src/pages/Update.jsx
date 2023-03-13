@@ -13,7 +13,7 @@ function Update() {
   const driver = drivers.find(({ _id }) => id === _id);
 
   const updateHandler = (data) => {
-    updateDriver(data);
+    updateDriver(id, data);
     navigate('/');
   };
 
